@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:note_app/src/data/note_data.dart';
 
 import 'package:note_app/src/models/note.dart';
 
 import '../../constants/colors.dart';
 
+// ignore: must_be_immutable
 class NoteCard extends StatelessWidget {
   Note note;
   NoteCard({
