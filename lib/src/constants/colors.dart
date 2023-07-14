@@ -1,4 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+
+Color getRandomBackgroundColor() {
+  return backgroundColors[Random().nextInt(backgroundColors.length)];
+}
 
 List<Color> backgroundColors = [
   const Color(0xFFCCE5FF), // light blue
