@@ -5,13 +5,11 @@ class Note {
   int id;
   String title;
   String content;
-  DateTime modifiedTime;
 
   Note({
     required this.id,
     required this.title,
     required this.content,
-    required this.modifiedTime,
   });
 
   Note copyWith({
@@ -24,7 +22,6 @@ class Note {
       id: id ?? this.id,
       title: title ?? this.title,
       content: content ?? this.content,
-      modifiedTime: modifiedTime ?? this.modifiedTime,
     );
   }
 
@@ -33,7 +30,6 @@ class Note {
       'id': id,
       'title': title,
       'content': content,
-      'modifiedTime': modifiedTime.millisecondsSinceEpoch,
     };
   }
 
@@ -42,8 +38,6 @@ class Note {
       id: map['id'] as int,
       title: map['title'] as String,
       content: map['content'] as String,
-      modifiedTime:
-          DateTime.fromMillisecondsSinceEpoch(map['modifiedTime'] as int),
     );
   }
 
@@ -54,24 +48,18 @@ class Note {
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, modifiedTime: $modifiedTime)';
+    return 'Note(id: $id, title: $title, content: $content, )';
   }
 
   @override
   bool operator ==(covariant Note other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.title == title &&
-        other.content == content &&
-        other.modifiedTime == modifiedTime;
+    return other.id == id && other.title == title && other.content == content;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        title.hashCode ^
-        content.hashCode ^
-        modifiedTime.hashCode;
+    return id.hashCode ^ title.hashCode ^ content.hashCode;
   }
 }
