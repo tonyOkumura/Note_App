@@ -28,7 +28,7 @@ class NoteCard extends StatelessWidget {
             },
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(16), topLeft: Radius.circular(16)),
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.green.shade500,
             icon: Icons.edit,
           ),
           SlidableAction(
@@ -42,14 +42,14 @@ class NoteCard extends StatelessWidget {
               // TODO delete note
             },
             icon: Icons.delete,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.red.shade300,
           )
         ]),
         child: Card(
           color: getRandomBackgroundColor(),
           child: ListTile(
             title: Text(note.title,
-                style: TextStyle(color: Colors.black, fontSize: 20)),
+                style: TextStyle(color: Colors.black, fontSize: 24)),
             subtitle: Text(note.content, style: TextStyle(color: Colors.black)),
           ),
         ),
