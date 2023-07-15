@@ -56,7 +56,4 @@ class NoteData {
           '1. Visit Grand Canyon\n2. Go on a hot air balloon ride\n3. Try local cuisine\n4. Attend a concert',
     ),
   ];
-  void deleteNote(int id) {
-    sampleNotes.removeWhere((note) => note.id == id);
-  }
 }

@@ -4,6 +4,7 @@ import 'package:note_app/src/models/note.dart';
 
 import 'widgets/note_card.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   List<Note> notes = NoteData().sampleNotes;
