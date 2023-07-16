@@ -48,7 +48,7 @@ class NoteCard extends GetView<HomeController> {
           )
         ]),
         child: Card(
-          color: getRandomBackgroundColor(),
+          color: Color(int.parse(note.color, radix: 16)),
           child: ListTile(
             title: Text(note.title,
                 style: TextStyle(color: Colors.black, fontSize: 24)),

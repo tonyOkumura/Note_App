@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:note_app/src/data/note_data.dart';
 import 'package:note_app/src/models/note.dart';
 import 'package:note_app/src/screens/add_screen.dart';
 
@@ -21,8 +20,9 @@ class HomeScreen extends GetView<HomeController> {
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(children: [
-          const TextField(
-              decoration: InputDecoration(
+          TextField(
+              controller: controller.searchController,
+              decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   hintText: "Search notes ...",
                   border: OutlineInputBorder(),
