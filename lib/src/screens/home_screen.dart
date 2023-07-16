@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:note_app/src/data/note_data.dart';
 import 'package:note_app/src/models/note.dart';
+import 'package:note_app/src/screens/add_screen.dart';
 
+import '../controllers/home_controller.dart';
 import 'widgets/note_card.dart';
 
 // ignore: must_be_immutable
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   HomeScreen({super.key});
-  List<Note> notes = NoteData().sampleNotes;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +29,22 @@ class HomeScreen extends StatelessWidget {
                   prefixIcon: Icon(Icons.search))),
           SizedBox(height: 8),
           Expanded(
-              child: ListView.builder(
-                  itemCount: notes.length,
+            child: Obx(
+              () => ListView.builder(
+                  itemCount: controller.notes.length,
                   itemBuilder: ((context, index) {
-                    return NoteCard(note: notes[index]);
-                  })))
+                    return NoteCard(
+                        note: controller
+                            .notes[controller.notes.length - index - 1]);
+                  })),
+            ),
+          ),
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => AddScreen());
+        },
         child: Icon(Icons.add),
       ),
     );

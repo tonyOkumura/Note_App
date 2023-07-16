@@ -1,13 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 
 import 'package:note_app/src/models/note.dart';
 
+import '../../controllers/home_controller.dart';
 import '../../constants/colors.dart';
 
 // ignore: must_be_immutable
-class NoteCard extends StatelessWidget {
+class NoteCard extends GetView<HomeController> {
   Note note;
   NoteCard({
     Key? key,
@@ -39,7 +41,7 @@ class NoteCard extends StatelessWidget {
                 topRight: Radius.circular(16)),
             onPressed: (context) {
               print("Delete note Number: ${note.id}");
-              // TODO delete note
+              controller.deleteNote(note);
             },
             icon: Icons.delete,
             backgroundColor: Colors.red.shade300,
