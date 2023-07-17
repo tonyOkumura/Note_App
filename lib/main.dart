@@ -11,8 +11,8 @@ import 'src/models/note.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.initFlutter();
-  Directory directory = await pathProvider.getApplicationDocumentsDirectory();
-  Hive.init(directory.path);
+  //Directory directory = await pathProvider.getApplicationDocumentsDirectory();
+  //Hive.init(directory.path);
   Hive.registerAdapter(NoteAdapter());
   runApp(const MyApp());
 }
