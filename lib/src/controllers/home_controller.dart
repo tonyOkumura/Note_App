@@ -34,11 +34,26 @@ class HomeController extends GetxController {
     required String content,
   }) {
     final note = Note(
-        id: notes.length,
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
         title: title,
         content: content,
         color: getRandomBackgroundColor());
     _noteBox.put(note.id, note);
     notes.add(note);
+  }
+
+  void editNote(Note oldNote,
+      {required String newTitle, required String newContent}) {
+    final Note updatedNote = Note(
+      id: oldNote.id,
+      title: newTitle,
+      content: newContent,
+      color: oldNote.color,
+    );
+
+    _noteBox.put(oldNote.id, updatedNote);
+
+    int oldNoteIndex = notes.indexOf(oldNote);
+    notes[oldNoteIndex] = updatedNote;
   }
 }

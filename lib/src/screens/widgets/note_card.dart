@@ -7,6 +7,7 @@ import 'package:note_app/src/models/note.dart';
 
 import '../../controllers/home_controller.dart';
 import '../../constants/colors.dart';
+import '../edit_screen.dart';
 
 // ignore: must_be_immutable
 class NoteCard extends GetView<HomeController> {
@@ -26,7 +27,7 @@ class NoteCard extends GetView<HomeController> {
             autoClose: true,
             onPressed: (context) {
               print("Edit note number : ${note.id}");
-              // TODO Edit note
+              Get.to(() => EditScreen(note: note));
             },
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(16), topLeft: Radius.circular(16)),

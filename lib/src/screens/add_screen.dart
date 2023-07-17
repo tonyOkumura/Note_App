@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:note_app/src/controllers/home_controller.dart';
+
+final _key = GlobalKey<FormState>();
 
 class AddScreen extends GetView<HomeController> {
   AddScreen({super.key});
@@ -16,12 +19,17 @@ class AddScreen extends GetView<HomeController> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          TextField(
-            controller: titleController,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
-              hintText: "The Title of your note",
+          Form(
+            key: _key,
+            child: TextFormField(
+              controller: titleController,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(vertical: 10),
+                hintText: "The Title of your note",
+              ),
+              validator: (value) =>
+                  value!.isEmpty ? "Title can't be empty" : null,
             ),
           ),
           Divider(),
@@ -40,11 +48,17 @@ class AddScreen extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.addNote(
-            title: titleController.text,
-            content: contentController.text,
-          );
-          Get.back();
+          _key.currentState!.validate()
+              ? {
+                  controller.addNote(
+                    title: titleController.text,
+                    content: contentController.text,
+                  ),
+                  titleController.clear(),
+                  contentController.clear(),
+                  Get.back()
+                }
+              : null;
         },
         child: Icon(Icons.add),
       ),
